@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Beer Alcohol Prediction</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+
+<body>
+
+<h1>Beer Servings Prediction</h1>
+
+<div class="form-box">
+
+<form action="/predict" method="post">
+
+<label>Country</label>
+<select name="country">
+{% for c in countries %}
+<option value="{{c}}">{{c}}</option>
+{% endfor %}
+</select>
+
+<label>Continent</label>
+<select name="continent">
+{% for c in continents %}
+<option value="{{c}}">{{c}}</option>
+{% endfor %}
+</select>
+
+<label>Beer Servings</label>
+<input type="number" name="beer_servings" required>
+
+<label>Spirit Servings</label>
+<input type="number" name="spirit_servings" required>
+
+<label>Wine Servings</label>
+<input type="number" name="wine_servings" required>
+
+<br><br>
+
+<button type="submit">Predict</button>
+
+</form>
+
+<br>
+
+<h2>{{ prediction_text }}</h2>
+
+</div>
+
+</body>
+</html>
